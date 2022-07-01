@@ -25,7 +25,7 @@ pydot==1.4.2
 pyflakes==2.4.0
 pyparsing==3.0.9
 pytz==2022.1
-scipy==1.8.1
+scipy==1.7.3
 six==1.16.0
 smart-open==6.0.0
 sqlparse==0.4.2
