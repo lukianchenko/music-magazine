@@ -45,7 +45,7 @@ class TestArticleModel(TestCase):
 
     def test_publish_date(self):
         self.assertEqual(
-            self.test_article.publication_date.strftime("%Y-%m-%d %H:%M:%S"),
+            self.test_article.create_datetime.strftime("%Y-%m-%d %H:%M:%S"),
             timezone.now().strftime("%Y-%m-%d %H:%M:%S"),
         )
 
