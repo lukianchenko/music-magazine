@@ -1,5 +1,4 @@
 import uuid as uuid
-from abc import abstractproperty
 
 from django.contrib.auth import get_user_model
 from django.db import models
