@@ -1,13 +1,11 @@
 import os
 
-from config.settings.base import *   # NOQA: F403
+from config.settings.base import *    # NOQA: F403
+from config.settings.base import BASE_DIR
 
 DEBUG = True
 
 CURRENT_ENV = "DEV"
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
