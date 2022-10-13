@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, DetailView, ListView
 
@@ -10,7 +11,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
-        context['articles_list'] = Article.objects.all()
+        context['articles_list'] = Article.objects.filter(category__id=2)
         return context
 
 

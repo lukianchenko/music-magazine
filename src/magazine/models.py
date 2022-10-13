@@ -1,3 +1,4 @@
+from tabnanny import verbose
 import uuid as uuid
 
 from django.contrib.auth import get_user_model
@@ -16,7 +17,7 @@ class Article(BaseModel):
     uuid = models.UUIDField(default=uuid.uuid4, db_index=True, unique=True)
     category = models.ForeignKey(to="magazine.Category", related_name="articles", on_delete=models.CASCADE)
     author = models.ForeignKey(to=get_user_model(), related_name="articles", on_delete=models.CASCADE)
-    cover_image = models.ImageField(default="default.png", upload_to="media/covers")
+    cover_image = models.ImageField(default="default.png", upload_to="covers")
     title = models.CharField(max_length=1024)
     text = models.TextField()
 
@@ -36,6 +37,10 @@ class Category(BaseModel):
 
     def articles_count(self):
         return self.articles.count()
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
 class Tag(BaseModel):
