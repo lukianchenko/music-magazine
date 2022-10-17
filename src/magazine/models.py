@@ -21,7 +21,7 @@ class Article(BaseModel):
     title = models.CharField(max_length=1024)
     text = models.TextField()
     visible = models.BooleanField(default=False)
-    tags = models.ManyToManyField(to="magazine.Tag", on_delete=models.CASCADE)
+    tags = models.ManyToManyField(to="magazine.Tag", related_name="articles")
 
     def save(self, *args, **kwargs):
         self.full_clean()
