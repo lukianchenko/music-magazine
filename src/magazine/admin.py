@@ -1,16 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from magazine.models import Article, Category
+from magazine.models import (Article, Category, Tag)
 
-
-@admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    pass
+for model in (Article, Category, Tag):
+    admin.site.register(model)
 
 admin.site.unregister(Group)
