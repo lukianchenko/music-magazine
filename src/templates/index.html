@@ -10,6 +10,7 @@
       <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
          rel="stylesheet">
       <title>Ukrainian music magazine</title>
+      <link rel="icon" href="{% static 'images/magazine.png' %}" type="image/icon type">
       <!-- Additional CSS Files -->
       <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
@@ -177,6 +178,9 @@
                                     </div>
                                     <div class="down-content">
                                        <h4>{{ article.title }}</h4>
+                                       {% for tag in article.tags.all %}
+                                          <a>{{tag.name}}</a>
+                                       {% endfor %}
                                     </div>
                                  </div>
                               {% empty %}
