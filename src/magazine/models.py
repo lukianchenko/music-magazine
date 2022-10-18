@@ -2,6 +2,7 @@ import uuid as uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class BaseModel(models.Model):
@@ -20,6 +21,7 @@ class Article(BaseModel):
     title = models.CharField(max_length=1024)
     text = models.TextField()
     visible = models.BooleanField(default=False)
+    tags = models.ManyToManyField(to="magazine.Tag", related_name="articles")
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -38,13 +40,13 @@ class Category(BaseModel):
 
     def articles_count(self):
         return self.articles.count()
-    
+
     def html_class_name(self):
         return self.name.lower().replace(" ", "")
 
     class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
 
 
 class Tag(BaseModel):
@@ -52,8 +54,3 @@ class Tag(BaseModel):
 
     def __str__(self):
         return self.name
-
-
-class ArticleTag(BaseModel):
-    article = models.ForeignKey(to="magazine.Article", related_name="article_tags", on_delete=models.CASCADE)
-    tag = models.ForeignKey(to="magazine.Tag", related_name="article_tags", on_delete=models.CASCADE)

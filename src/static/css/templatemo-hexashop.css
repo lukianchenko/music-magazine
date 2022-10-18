@@ -779,6 +779,7 @@ Category
 
 .category .item .down-content {
   padding-top: 30px;
+  padding-bottom: 30px;
   position: relative;
   z-index: 3;
   background-color: #fff;
@@ -796,6 +797,19 @@ Category
   color: #a1a1a1;
   font-weight: 500;
   display: block;
+}
+
+.category .item .down-content a {
+  font-size: 16px;
+  color: #a1a1a1;
+  font-weight: 500;
+  border: #414141 solid 1px;
+  border-radius: 5px;
+  padding: 0px 5px;
+}
+
+.category .item .down-content a:hover {
+  color: #414141;
 }
 
 .category .item .down-content ul.stars {
@@ -1471,8 +1485,7 @@ Single Product Page
  
  .quantity input::-webkit-outer-spin-button,
  .quantity input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
   margin: 0; }
   
   .quantity.buttons_added .minus:focus,
