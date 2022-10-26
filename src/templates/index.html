@@ -9,8 +9,14 @@
       <meta name="author" content="">
       <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
          rel="stylesheet">
-      <title>Ukrainian music magazine</title>
-      <link rel="icon" href="{% static 'images/magazine.png' %}" type="image/icon type">
+      
+         <title>Ukrainian music magazine</title>
+
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+      <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+
       <!-- Additional CSS Files -->
       <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
@@ -19,8 +25,6 @@
       <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
    </head>
    <body>
-
-      {% regroup articles by category as articles_list %}
 
       <!-- ***** Header Area Start ***** -->
       <header class="header-area header-sticky">
@@ -33,13 +37,15 @@
                      <!-- ***** Logo End ***** -->
                      <!-- ***** Menu Start ***** -->
                      <ul class="nav">
-                        {% for category, obj_list in articles_list %}
+                        {% for category in categories %}
                            {% if category.visible %}
-                              <li class="scroll-to-section"><a href="{% url 'index' %}#{{category.html_class_name}}">{{category.name}}</a></li>
+                              {% if category.articles %}
+                                 <li class="scroll-to-section"><a href="{% url 'index' %}#{{category.html_class_name}}">{{category.name}}</a></li>
+                              {% endif %}
                            {% endif %}
                         {% endfor %}
                         <li class="scroll-to-section"><a href="{% url 'about' %}">About Us</a></li>
-                        <li class="scroll-to-section"><a href="{% url 'contacts' %}">Contacts</a></li>
+                        <li class="scroll-to-section"><a href="{% url 'contact' %}">Contacts</a></li>
                      </ul>
                      <!-- ***** Menu End ***** -->
                   </nav>
@@ -154,6 +160,8 @@
 
       <!-- ***** Categories Area Starts ***** -->
 
+      {% regroup articles by category as articles_list %}
+
       {% for category, obj_list in articles_list %}
          {% if category.visible %}
             <section class="section category" id="{{category.html_class_name}}">
@@ -177,10 +185,12 @@
                                        <img src="{{ article.cover_image.url }}" alt="">
                                     </div>
                                     <div class="down-content">
-                                       <h4>{{ article.title }}</h4>
+                                       <a href="{% url 'magazine:article_details' uuid=article.uuid %}"><h4>{{ article.title }}</h4></a>
+                                       <div class="tags">
                                        {% for tag in article.tags.all %}
                                           <a>{{tag.name}}</a>
                                        {% endfor %}
+                                       </div>
                                     </div>
                                  </div>
                               {% empty %}

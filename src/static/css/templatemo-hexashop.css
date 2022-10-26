@@ -799,16 +799,15 @@ Category
   display: block;
 }
 
-.category .item .down-content a {
+.category .item .down-content .tags a {
   font-size: 16px;
+  font-style: italic;
   color: #a1a1a1;
   font-weight: 500;
-  border: #414141 solid 1px;
-  border-radius: 5px;
   padding: 0px 5px;
 }
 
-.category .item .down-content a:hover {
+.category .item .down-content .tags a:hover {
   color: #414141;
 }
 
