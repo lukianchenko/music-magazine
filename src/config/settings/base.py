@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
+    "rest_framework",
     "accounts",
     "magazine",
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,10 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CURRENT_ENV = "BASE"
+
+# REST settings
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTIFICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated",],
+}

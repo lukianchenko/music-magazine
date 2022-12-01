@@ -1,6 +1,5 @@
-import uuid
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from magazine.models import Article, Category
 

@@ -1,5 +1,7 @@
 from django.urls import path
-from magazine.views import ArticleDetailView, ContactView, AboutView, ArticlesListView
+
+from magazine.views import (AboutView, ArticleDetailView, ArticlesListView,
+                            ContactView)
 
 app_name = "magazine"
 
