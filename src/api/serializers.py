@@ -7,10 +7,9 @@ from magazine.models import Article
 class CustomerSerializer(ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['first_name', 'last_name', 'email', 'password']
 
     def get_first_name(self):
-        print(self.initial_data.get('first_name'))
         return self.initial_data.get('first_name')
 
 

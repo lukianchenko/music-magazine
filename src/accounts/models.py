@@ -13,7 +13,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     birthdate = models.DateField(_("birthday"), null=True, blank=True)
     bio = models.TextField(max_length=1024)
     registration_date = models.DateField(_("registration date"), null=True, blank=True, auto_now_add=True)
-    photo = models.ImageField(default="default.png", upload_to="media/users_photo", null=True, blank=True)
+    photo = models.ImageField(default="default.png", upload_to="users_photo", null=True, blank=True)
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
