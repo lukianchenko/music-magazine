@@ -1121,10 +1121,7 @@ footer h4 {
 }
 
 footer .under-footer {
-  margin-top: 30px;
-  padding-top: 30px;
   text-align: center;
-  border-top: 1px solid rgba(250,250,250,0.3);
 }
 
 footer .under-footer ul {
@@ -1315,6 +1312,10 @@ Single Product Page
 
 #product {
   margin-top: 80px;
+}
+
+#product .container {
+  width: 60%
 }
 
 #product .left-images img {
