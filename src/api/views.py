@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
-from rest_framework.generics import RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, ListAPIView
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView)
 from rest_framework.viewsets import ModelViewSet
 
 from api.serializers import ArticleSerializer, CustomerSerializer
@@ -38,6 +40,7 @@ class DeleteArticleView(DestroyAPIView):
 
     def get_object(self):
         return Article.objects.get(uuid=self.kwargs.get("uuid"))
+
 
 class ArticleListView(ListAPIView):
     queryset = Article.objects.all()
