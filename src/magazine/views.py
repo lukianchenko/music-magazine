@@ -10,9 +10,9 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.filter(visible=True)
-        categories_ids = [x.id for x in categories if x.articles_count()>0] 
-        context['categories'] = Category.objects.filter(id__in=categories_ids)
-        context['articles'] = Article.objects.select_related("category")
+        categories_ids = [x.id for x in categories if x.articles_count() > 0]
+        context["categories"] = Category.objects.filter(id__in=categories_ids)
+        context["articles"] = Article.objects.select_related("category")
         return context
 
 
@@ -22,8 +22,8 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.filter(visible=True)
-        categories_ids = [x.id for x in categories if x.articles_count()>0] 
-        context['categories'] = Category.objects.filter(id__in=categories_ids)
+        categories_ids = [x.id for x in categories if x.articles_count() > 0]
+        context["categories"] = Category.objects.filter(id__in=categories_ids)
         return context
 
 
@@ -33,8 +33,8 @@ class ContactView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.filter(visible=True)
-        categories_ids = [x.id for x in categories if x.articles_count()>0] 
-        context['categories'] = Category.objects.filter(id__in=categories_ids)
+        categories_ids = [x.id for x in categories if x.articles_count() > 0]
+        context["categories"] = Category.objects.filter(id__in=categories_ids)
         return context
 
 
@@ -55,6 +55,6 @@ class ArticleDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.filter(visible=True)
-        categories_ids = [x.id for x in categories if x.articles_count()>0] 
-        context['categories'] = Category.objects.filter(id__in=categories_ids)
+        categories_ids = [x.id for x in categories if x.articles_count() > 0]
+        context["categories"] = Category.objects.filter(id__in=categories_ids)
         return context
