@@ -8,9 +8,11 @@ RUN mkdir /music_magazine
 WORKDIR /music_magazine
 
 COPY ./src ./src
+COPY ./commands ./commands
 COPY requirements.txt ./requirements.txt
 
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-CMD ["python", "src/manage.py", "runserver", "0:8008"]
+CMD ["bash"]
+# ["python", "src/manage.py", "runserver", "0:8008"]
